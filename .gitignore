@@ -1,0 +1,47 @@
+# java
+.classpath
+
+# idea
+.idea
+*.iws
+*.iml
+*.ipr
+target/
+test-output/
+
+# eclipse
+.project
+.settings
+
+# vagrant
+.vagrant
+
+# python eggs
+*.pyc
+build/
+dist/
+*.egg-info/
+
+#node
+package-lock.json
+node_modules/
+
+# mac
+.DS_Store
+
+docs/docpad/src/documents/public/
+docs/docpad/out/
+docs/docpad/.docpad.db
+npm-debug.log
+*~
+*.*~
+*.sublime-*
+*.orig
+.*.sw?
+.buildpath
+dependency-reduced-pom.xml
+.Rproj.user
+.Rhistory
+.tern-project
+.pydevproject
+bin/
