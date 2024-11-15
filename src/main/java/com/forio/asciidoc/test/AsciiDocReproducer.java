@@ -2,8 +2,9 @@ package com.forio.asciidoc.test;
 
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
+import org.springframework.beans.factory.InitializingBean;
 
-public class AsciiDocReproducer {
+public class AsciiDocReproducer implements InitializingBean {
 
   private static final String DOC = "= v3 group\n" +
                                       ":doctype: article\n" +
@@ -1971,6 +1972,15 @@ public class AsciiDocReproducer {
                                       "----\n";
 
   public static void main (String[] args) {
+
+    try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
+
+      System.out.println(asciidoctor.convert(DOC, Options.builder().build()));
+    }
+  }
+
+  @Override
+  public void afterPropertiesSet () {
 
     try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
 

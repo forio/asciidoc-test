@@ -3,17 +3,20 @@
 
   <groupId>com.forio.epicenter</groupId>
   <artifactId>asciidoc-test</artifactId>
-  <packaging>jar</packaging>
+  <packaging>tanukisoft</packaging>
   <version>1.0.0</version>
   <name>AsciiDoc Test</name>
 
   <properties>
+    <tanukisoft.skip>true</tanukisoft.skip>
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--
     <asciidoctor.version>2.5.2</asciidoctor.version>
     -->
     <asciidoctor.version>3.0.0</asciidoctor.version>
+    <smallmind.version>6.2.0</smallmind.version>
+    <spring.version>6.1.4</spring.version>
   </properties>
 
   <dependencies>
@@ -21,6 +24,16 @@
       <groupId>org.asciidoctor</groupId>
       <artifactId>asciidoctorj</artifactId>
       <version>${asciidoctor.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.smallmind</groupId>
+      <artifactId>spark-tanukisoft-integration</artifactId>
+      <version>${smallmind.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>
@@ -41,25 +54,57 @@
             <release>${maven.compiler.release}</release>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.smallmind</groupId>
+          <artifactId>spark-tanukisoft-maven-plugin</artifactId>
+          <version>${smallmind.version}</version>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.5.0</version>
-        <executions>
-          <execution>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>java</goal>
-            </goals>
-            <configuration>
-              <mainClass>com.forio.asciidoc.test.AsciiDocReproducer</mainClass>
-            </configuration>
-          </execution>
-        </executions>
+        <groupId>org.smallmind</groupId>
+        <artifactId>spark-tanukisoft-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <skip>${tanukisoft.skip}</skip>
+          <useSystemD>true</useSystemD>
+          <compression>zip</compression>
+          <includeVersion>false</includeVersion>
+          <!--
+          <operatingSystem>windows-x86-64</operatingSystem>
+          -->
+          <operatingSystem>linux-x86-64</operatingSystem>
+          <wrapperListener>
+            org.smallmind.spark.tanukisoft.integration.spring.ClassPathXmlSpringContextWrapperListener
+          </wrapperListener>
+          <appParameters>
+            <appParameter>com/forio/asciidoc/test/asciidoc.xml</appParameter>
+          </appParameters>
+          <jvmArgs>
+            <jvmArg>-server</jvmArg>
+            <jvmArg>-XX:+UseG1GC</jvmArg>
+            <jvmArg>-XX:+UseNUMA</jvmArg>
+            <jvmArg>-Xdebug</jvmArg>
+            <jvmArg>-agentlib:jdwp=transport=dt_socket,address=*:8178,server=y,suspend=n</jvmArg>
+            <jvmArg>-Dfile.encoding=UTF-8</jvmArg>
+          </jvmArgs>
+        </configuration>
       </plugin>
     </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources/spring</directory>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
   </build>
+  <profiles>
+    <profile>
+      <id>tanukisoft</id>
+      <properties>
+        <tanukisoft.skip>false</tanukisoft.skip>
+      </properties>
+    </profile>
+  </profiles>
 </project>
