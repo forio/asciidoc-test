@@ -746,6 +746,53 @@ public class AsciiDocReproducer implements InitializingBean {
                                       "  } ],\n" +
                                       "  \"type\" : \"string\"\n" +
                                       "}\n" +
+                                      "* QUERY *tombstone* : TYPE {\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"boolean\"\n" +
+                                      "}\n" +
+                                      "\n" +
+                                      "==== Response\n" +
+                                      "\n" +
+                                      "TYPE {\n" +
+                                      "  \"type\" : \"null\"\n" +
+                                      "}\n" +
+                                      "\n" +
+                                      "\n" +
+                                      "=== DELETE /api/v3/{accountShortName}/{projectShortName}/group\n" +
+                                      "\n" +
+                                      "*Authentication*: _SUPPORT_\n" +
+                                      "\n" +
+                                      "==== Produces\n" +
+                                      "\n" +
+                                      "* application/json\n" +
+                                      "\n" +
+                                      "==== Parameters\n" +
+                                      "\n" +
+                                      "* PATH *accountShortName* : TYPE {\n" +
+                                      "  \"x-epicenter-validations\" : [ {\n" +
+                                      "    \"NotBlank\" : true\n" +
+                                      "  } ],\n" +
+                                      "  \"type\" : \"string\"\n" +
+                                      "}\n" +
+                                      "* PATH *projectShortName* : TYPE {\n" +
+                                      "  \"x-epicenter-validations\" : [ {\n" +
+                                      "    \"NotBlank\" : true\n" +
+                                      "  } ],\n" +
+                                      "  \"type\" : \"string\"\n" +
+                                      "}\n" +
+                                      "* QUERY *groupKeys* : TYPE {\n" +
+                                      "  \"type\" : \"array\",\n" +
+                                      "  \"items\" : {\n" +
+                                      "    \"x-epicenter-validations\" : [ {\n" +
+                                      "      \"NotEmpty\" : true\n" +
+                                      "    } ],\n" +
+                                      "    \"type\" : \"string\"\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "* QUERY *tombstone* : TYPE {\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"boolean\"\n" +
+                                      "}\n" +
                                       "\n" +
                                       "==== Response\n" +
                                       "\n" +
@@ -852,39 +899,6 @@ public class AsciiDocReproducer implements InitializingBean {
                                       "\n" +
                                       "== Definitions\n" +
                                       "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StripePaymentCreateInView, StripePaymentCreateInView]]\n" +
-                                      "=== StripePaymentCreateInView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"x-epicenter-validations\" : [ {\n" +
-                                      "    \"AllowedByLicense\" : [ \"RESALE\" ]\n" +
-                                      "  } ],\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"required\" : [ \"token\", \"objectType\" ],\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"description\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"x-epicenter-validations\" : [ {\n" +
-                                      "        \"NotBlank\" : true\n" +
-                                      "      } ],\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"token\" : {\n" +
-                                      "      \"x-epicenter-validations\" : [ {\n" +
-                                      "        \"NotBlank\" : true\n" +
-                                      "      } ],\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"objectType\" : {\n" +
-                                      "      \"const\" : \"stripe\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
                                       "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.secret.v2.entity.GraftReadOutView, GraftReadOutView]]\n" +
                                       "=== GraftReadOutView\n" +
                                       "\n" +
@@ -899,69 +913,6 @@ public class AsciiDocReproducer implements InitializingBean {
                                       "      \"type\" : \"string\"\n" +
                                       "    },\n" +
                                       "    \"realm\" : \"<<com.fasterxml.jackson.databind.JsonNode>>\"\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StatusQuantizedOutView, StatusQuantizedOutView]]\n" +
-                                      "=== StatusQuantizedOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"code\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"message\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingReadOutView, PricingReadOutView]]\n" +
-                                      "=== PricingReadOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"amount\" : {\n" +
-                                      "      \"comment\" : \"Amount (in cents) for user signup.\",\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingCreateInView, PricingCreateInView]]\n" +
-                                      "=== PricingCreateInView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"x-epicenter-validations\" : [ {\n" +
-                                      "    \"AllowedByLicense\" : [ \"RESALE\" ]\n" +
-                                      "  } ],\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"amount\" : {\n" +
-                                      "      \"comment\" : \"Amount (in cents) for user signup.\",\n" +
-                                      "      \"minimum\" : 0,\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    }\n" +
                                       "  }\n" +
                                       "}\n" +
                                       "----\n" +
@@ -1177,6 +1128,550 @@ public class AsciiDocReproducer implements InitializingBean {
                                       "}\n" +
                                       "----\n" +
                                       "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderCreateInView, FlightRecorderCreateInView]]\n" +
+                                      "=== FlightRecorderCreateInView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"x-epicenter-validations\" : [ {\n" +
+                                      "    \"Anointed\" : true\n" +
+                                      "  }, {\n" +
+                                      "    \"AllowedByLicense\" : [ \"NATIVE\" ]\n" +
+                                      "  } ],\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"required\" : [ \"stop\", \"enabled\" ],\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"stop\" : {\n" +
+                                      "      \"x-epicenter-validations\" : [ {\n" +
+                                      "        \"GreaterThan\" : 0\n" +
+                                      "      } ],\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"start\" : {\n" +
+                                      "      \"minimum\" : 0,\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"enabled\" : {\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[org.smallmind.web.json.scaffold.util.Page, Page]]\n" +
+                                      "=== Page\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"required\" : [ \"resultSize\", \"firstResult\", \"maxResults\", \"totalResults\" ],\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"totalResults\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"maxResults\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    },\n" +
+                                      "    \"resultSize\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    },\n" +
+                                      "    \"firstResult\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingCreateInView, PricingCreateInView]]\n" +
+                                      "=== PricingCreateInView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"x-epicenter-validations\" : [ {\n" +
+                                      "    \"AllowedByLicense\" : [ \"RESALE\" ]\n" +
+                                      "  } ],\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"amount\" : {\n" +
+                                      "      \"comment\" : \"Amount (in cents) for user signup.\",\n" +
+                                      "      \"minimum\" : 0,\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StatusQuantizedOutView, StatusQuantizedOutView]]\n" +
+                                      "=== StatusQuantizedOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"code\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"message\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.permission.v2.entity.GroupPermissionUpdateInView, GroupPermissionUpdateInView]]\n" +
+                                      "=== GroupPermissionUpdateInView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"required\" : [ \"objectType\" ],\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"role\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"available\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    },\n" +
+                                      "    \"objectType\" : {\n" +
+                                      "      \"const\" : \"group\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingReadOutView, PricingReadOutView]]\n" +
+                                      "=== PricingReadOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"amount\" : {\n" +
+                                      "      \"comment\" : \"Amount (in cents) for user signup.\",\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StatusCreateInView, StatusCreateInView]]\n" +
+                                      "=== StatusCreateInView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"code\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"x-epicenter-validations\" : [ {\n" +
+                                      "        \"NotBlank\" : true\n" +
+                                      "      }, {\n" +
+                                      "        \"MoreSanitized\" : true\n" +
+                                      "      } ],\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"message\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"x-epicenter-validations\" : [ {\n" +
+                                      "        \"NotBlank\" : true\n" +
+                                      "      }, {\n" +
+                                      "        \"LessSanitized\" : true\n" +
+                                      "      } ],\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.secret.v2.entity.MFADetailReadOutView, MFADetailReadOutView]]\n" +
+                                      "=== MFADetailReadOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"mfaMethodology\" : {\n" +
+                                      "      \"type\" : \"string\",\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"enum\" : [ \"NONE\", \"TOTP\" ]\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[entity.OST.api.v3.accountShortName.projectShortName.group.self.groupKey, entity.POST.api.v3.accountShortName.projectShortName.group.self.groupKey]]\n" +
+                                      "=== entity.POST.api.v3.accountShortName.projectShortName.group.self.groupKey\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"required\" : [ \"allow\", \"emails\" ],\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"allow\" : {\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    },\n" +
+                                      "    \"emails\" : {\n" +
+                                      "      \"x-epicenter-validations\" : [ {\n" +
+                                      "        \"NotEmpty\" : true\n" +
+                                      "      } ],\n" +
+                                      "      \"type\" : \"array\",\n" +
+                                      "      \"items\" : {\n" +
+                                      "        \"type\" : \"string\"\n" +
+                                      "      }\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.permission.v2.entity.GroupPermissionReadOutView, GroupPermissionReadOutView]]\n" +
+                                      "=== GroupPermissionReadOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"required\" : [ \"objectType\" ],\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"role\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"available\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    },\n" +
+                                      "    \"user\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.PseudonymReadOutView>>\",\n" +
+                                      "    \"objectType\" : {\n" +
+                                      "      \"const\" : \"group\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderQuantizedOutView, FlightRecorderQuantizedOutView]]\n" +
+                                      "=== FlightRecorderQuantizedOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"stop\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"start\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"enabled\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.PseudonymReadOutView, PseudonymReadOutView]]\n" +
+                                      "=== PseudonymReadOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"lastUpdated\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"created\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"displayName\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"detail\" : {\n" +
+                                      "      \"oneOf\" : [ \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.ExternalUserReadOutView>>\", \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.NativeUserReadOutView>>\" ]\n" +
+                                      "    },\n" +
+                                      "    \"userId\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"userKey\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingQuantizedOutView, PricingQuantizedOutView]]\n" +
+                                      "=== PricingQuantizedOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"amount\" : {\n" +
+                                      "      \"comment\" : \"Amount (in cents) for user signup.\",\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.NativeUserReadOutView, NativeUserReadOutView]]\n" +
+                                      "=== NativeUserReadOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"required\" : [ \"objectType\" ],\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"lastLogin\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"modality\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"created\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"givenName\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"countdown\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.CountdownReadOutView>>\",\n" +
+                                      "    \"active\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    },\n" +
+                                      "    \"handle\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"objectType\" : {\n" +
+                                      "      \"const\" : \"native\"\n" +
+                                      "    },\n" +
+                                      "    \"lastUpdated\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"uploadOrder\" : {\n" +
+                                      "      \"comment\" : \"The order in which the user was added to the group during batch upload, null otherwise\",\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    },\n" +
+                                      "    \"familyName\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"email\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"mfaDetail\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.secret.v2.entity.MFADetailReadOutView>>\"\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.GroupQuantizedOutView, GroupQuantizedOutView]]\n" +
+                                      "=== GroupQuantizedOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"creator\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"groupQuanta\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.GroupQuantaQuantizedOutView>>\",\n" +
+                                      "    \"runLimit\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    },\n" +
+                                      "    \"allowSelfRegistration\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    },\n" +
+                                      "    \"salesChannel\" : {\n" +
+                                      "      \"type\" : \"string\",\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"enum\" : [ \"TEAM\", \"TEST\", \"FORIO\", \"HBP_HIGHER_ED\", \"HBP_CL\" ]\n" +
+                                      "    },\n" +
+                                      "    \"perpetual\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    },\n" +
+                                      "    \"capacity\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    },\n" +
+                                      "    \"terminationDate\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"reference\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"organization\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"name\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"demonstration\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    },\n" +
+                                      "    \"flightRecorder\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderQuantizedOutView>>\",\n" +
+                                      "    \"event\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"allowMembershipChanges\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    },\n" +
+                                      "    \"pricing\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingQuantizedOutView>>\",\n" +
+                                      "    \"startDate\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"status\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StatusQuantizedOutView>>\",\n" +
+                                      "    \"expirationDate\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StatusUpdateInView, StatusUpdateInView]]\n" +
+                                      "=== StatusUpdateInView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"code\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"x-epicenter-validations\" : [ {\n" +
+                                      "        \"NotBlank\" : true\n" +
+                                      "      }, {\n" +
+                                      "        \"MoreSanitized\" : true\n" +
+                                      "      } ],\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"message\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"x-epicenter-validations\" : [ {\n" +
+                                      "        \"NotBlank\" : true\n" +
+                                      "      }, {\n" +
+                                      "        \"LessSanitized\" : true\n" +
+                                      "      } ],\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderUpdateInView, FlightRecorderUpdateInView]]\n" +
+                                      "=== FlightRecorderUpdateInView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"x-epicenter-validations\" : [ {\n" +
+                                      "    \"Anointed\" : true\n" +
+                                      "  }, {\n" +
+                                      "    \"AllowedByLicense\" : [ \"NATIVE\" ]\n" +
+                                      "  } ],\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"stop\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"x-epicenter-validations\" : [ {\n" +
+                                      "        \"GreaterThan\" : 0\n" +
+                                      "      } ],\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"start\" : {\n" +
+                                      "      \"minimum\" : 0,\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"enabled\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
                                       "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.permission.v2.entity.GroupPermissionCreateInView, GroupPermissionCreateInView]]\n" +
                                       "=== GroupPermissionCreateInView\n" +
                                       "\n" +
@@ -1204,6 +1699,203 @@ public class AsciiDocReproducer implements InitializingBean {
                                       "    },\n" +
                                       "    \"objectType\" : {\n" +
                                       "      \"const\" : \"group\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.ExternalUserReadOutView, ExternalUserReadOutView]]\n" +
+                                      "=== ExternalUserReadOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"required\" : [ \"objectType\" ],\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"lastLogin\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"modality\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"graft\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.secret.v2.entity.GraftReadOutView>>\",\n" +
+                                      "    \"created\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"givenName\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"countdown\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.CountdownReadOutView>>\",\n" +
+                                      "    \"active\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    },\n" +
+                                      "    \"handle\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"objectType\" : {\n" +
+                                      "      \"const\" : \"external\"\n" +
+                                      "    },\n" +
+                                      "    \"lastUpdated\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"uploadOrder\" : {\n" +
+                                      "      \"comment\" : \"The order in which the user was added to the group during batch upload, null otherwise\",\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    },\n" +
+                                      "    \"familyName\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"email\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"mfaDetail\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.secret.v2.entity.MFADetailReadOutView>>\"\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.GroupQuantaQuantizedOutView, GroupQuantaQuantizedOutView]]\n" +
+                                      "=== GroupQuantaQuantizedOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"runCount\" : {\n" +
+                                      "      \"comment\" : \"Count of groups.\",\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.fasterxml.jackson.databind.JsonNode, JsonNode]]\n" +
+                                      "=== JsonNode\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\"\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderReadOutView, FlightRecorderReadOutView]]\n" +
+                                      "=== FlightRecorderReadOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"stop\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"start\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int64\"\n" +
+                                      "    },\n" +
+                                      "    \"enabled\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"boolean\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.CountdownReadOutView, CountdownReadOutView]]\n" +
+                                      "=== CountdownReadOutView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"last\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"count\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingUpdateInView, PricingUpdateInView]]\n" +
+                                      "=== PricingUpdateInView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"x-epicenter-validations\" : [ {\n" +
+                                      "    \"AllowedByLicense\" : [ \"RESALE\" ]\n" +
+                                      "  } ],\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"amount\" : {\n" +
+                                      "      \"comment\" : \"Amount (in cents) for user signup.\",\n" +
+                                      "      \"minimum\" : 0,\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"type\" : \"integer\",\n" +
+                                      "      \"format\" : \"int32\"\n" +
+                                      "    }\n" +
+                                      "  }\n" +
+                                      "}\n" +
+                                      "----\n" +
+                                      "\n" +
+                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StripePaymentCreateInView, StripePaymentCreateInView]]\n" +
+                                      "=== StripePaymentCreateInView\n" +
+                                      "\n" +
+                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
+                                      "----\n" +
+                                      "{\n" +
+                                      "  \"nullable\" : true,\n" +
+                                      "  \"x-epicenter-validations\" : [ {\n" +
+                                      "    \"AllowedByLicense\" : [ \"RESALE\" ]\n" +
+                                      "  } ],\n" +
+                                      "  \"type\" : \"object\",\n" +
+                                      "  \"required\" : [ \"token\", \"objectType\" ],\n" +
+                                      "  \"properties\" : {\n" +
+                                      "    \"description\" : {\n" +
+                                      "      \"nullable\" : true,\n" +
+                                      "      \"x-epicenter-validations\" : [ {\n" +
+                                      "        \"NotBlank\" : true\n" +
+                                      "      } ],\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"token\" : {\n" +
+                                      "      \"x-epicenter-validations\" : [ {\n" +
+                                      "        \"NotBlank\" : true\n" +
+                                      "      } ],\n" +
+                                      "      \"type\" : \"string\"\n" +
+                                      "    },\n" +
+                                      "    \"objectType\" : {\n" +
+                                      "      \"const\" : \"stripe\"\n" +
                                       "    }\n" +
                                       "  }\n" +
                                       "}\n" +
@@ -1320,651 +2012,6 @@ public class AsciiDocReproducer implements InitializingBean {
                                       "    \"status\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StatusUpdateInView>>\",\n" +
                                       "    \"expirationDate\" : {\n" +
                                       "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.permission.v2.entity.GroupPermissionReadOutView, GroupPermissionReadOutView]]\n" +
-                                      "=== GroupPermissionReadOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"required\" : [ \"objectType\" ],\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"role\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"available\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    },\n" +
-                                      "    \"user\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.PseudonymReadOutView>>\",\n" +
-                                      "    \"objectType\" : {\n" +
-                                      "      \"const\" : \"group\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.NativeUserReadOutView, NativeUserReadOutView]]\n" +
-                                      "=== NativeUserReadOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"required\" : [ \"objectType\" ],\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"lastLogin\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"modality\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"created\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"givenName\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"countdown\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.CountdownReadOutView>>\",\n" +
-                                      "    \"active\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    },\n" +
-                                      "    \"handle\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"objectType\" : {\n" +
-                                      "      \"const\" : \"native\"\n" +
-                                      "    },\n" +
-                                      "    \"lastUpdated\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"uploadOrder\" : {\n" +
-                                      "      \"comment\" : \"The order in which the user was added to the group during batch upload, null otherwise\",\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    },\n" +
-                                      "    \"familyName\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"email\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"mfaDetail\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.secret.v2.entity.MFADetailReadOutView>>\"\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.fasterxml.jackson.databind.JsonNode, JsonNode]]\n" +
-                                      "=== JsonNode\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\"\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[org.smallmind.web.json.scaffold.util.Page, Page]]\n" +
-                                      "=== Page\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"required\" : [ \"resultSize\", \"firstResult\", \"maxResults\", \"totalResults\" ],\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"totalResults\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"maxResults\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    },\n" +
-                                      "    \"resultSize\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    },\n" +
-                                      "    \"firstResult\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.PseudonymReadOutView, PseudonymReadOutView]]\n" +
-                                      "=== PseudonymReadOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"lastUpdated\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"created\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"displayName\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"detail\" : {\n" +
-                                      "      \"oneOf\" : [ \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.ExternalUserReadOutView>>\", \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.NativeUserReadOutView>>\" ]\n" +
-                                      "    },\n" +
-                                      "    \"userId\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"userKey\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderReadOutView, FlightRecorderReadOutView]]\n" +
-                                      "=== FlightRecorderReadOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"stop\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"start\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"enabled\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.CountdownReadOutView, CountdownReadOutView]]\n" +
-                                      "=== CountdownReadOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"last\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"count\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderQuantizedOutView, FlightRecorderQuantizedOutView]]\n" +
-                                      "=== FlightRecorderQuantizedOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"stop\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"start\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"enabled\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderUpdateInView, FlightRecorderUpdateInView]]\n" +
-                                      "=== FlightRecorderUpdateInView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"x-epicenter-validations\" : [ {\n" +
-                                      "    \"Anointed\" : true\n" +
-                                      "  }, {\n" +
-                                      "    \"AllowedByLicense\" : [ \"NATIVE\" ]\n" +
-                                      "  } ],\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"stop\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"x-epicenter-validations\" : [ {\n" +
-                                      "        \"GreaterThan\" : 0\n" +
-                                      "      } ],\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"start\" : {\n" +
-                                      "      \"minimum\" : 0,\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"enabled\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingUpdateInView, PricingUpdateInView]]\n" +
-                                      "=== PricingUpdateInView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"x-epicenter-validations\" : [ {\n" +
-                                      "    \"AllowedByLicense\" : [ \"RESALE\" ]\n" +
-                                      "  } ],\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"amount\" : {\n" +
-                                      "      \"comment\" : \"Amount (in cents) for user signup.\",\n" +
-                                      "      \"minimum\" : 0,\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingQuantizedOutView, PricingQuantizedOutView]]\n" +
-                                      "=== PricingQuantizedOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"amount\" : {\n" +
-                                      "      \"comment\" : \"Amount (in cents) for user signup.\",\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.permission.v2.entity.GroupPermissionUpdateInView, GroupPermissionUpdateInView]]\n" +
-                                      "=== GroupPermissionUpdateInView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"required\" : [ \"objectType\" ],\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"role\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"available\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    },\n" +
-                                      "    \"objectType\" : {\n" +
-                                      "      \"const\" : \"group\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[entity.OST.api.v3.accountShortName.projectShortName.group.self.groupKey, entity.POST.api.v3.accountShortName.projectShortName.group.self.groupKey]]\n" +
-                                      "=== entity.POST.api.v3.accountShortName.projectShortName.group.self.groupKey\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"required\" : [ \"allow\", \"emails\" ],\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"allow\" : {\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    },\n" +
-                                      "    \"emails\" : {\n" +
-                                      "      \"x-epicenter-validations\" : [ {\n" +
-                                      "        \"NotEmpty\" : true\n" +
-                                      "      } ],\n" +
-                                      "      \"type\" : \"array\",\n" +
-                                      "      \"items\" : {\n" +
-                                      "        \"type\" : \"string\"\n" +
-                                      "      }\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StatusUpdateInView, StatusUpdateInView]]\n" +
-                                      "=== StatusUpdateInView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"code\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"x-epicenter-validations\" : [ {\n" +
-                                      "        \"NotBlank\" : true\n" +
-                                      "      }, {\n" +
-                                      "        \"MoreSanitized\" : true\n" +
-                                      "      } ],\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"message\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"x-epicenter-validations\" : [ {\n" +
-                                      "        \"NotBlank\" : true\n" +
-                                      "      }, {\n" +
-                                      "        \"LessSanitized\" : true\n" +
-                                      "      } ],\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.GroupQuantizedOutView, GroupQuantizedOutView]]\n" +
-                                      "=== GroupQuantizedOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"creator\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"groupQuanta\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.GroupQuantaQuantizedOutView>>\",\n" +
-                                      "    \"runLimit\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    },\n" +
-                                      "    \"allowSelfRegistration\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    },\n" +
-                                      "    \"salesChannel\" : {\n" +
-                                      "      \"type\" : \"string\",\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"enum\" : [ \"TEAM\", \"TEST\", \"FORIO\", \"HBP_HIGHER_ED\", \"HBP_CL\" ]\n" +
-                                      "    },\n" +
-                                      "    \"perpetual\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    },\n" +
-                                      "    \"capacity\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    },\n" +
-                                      "    \"terminationDate\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"reference\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"organization\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"name\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"demonstration\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    },\n" +
-                                      "    \"flightRecorder\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderQuantizedOutView>>\",\n" +
-                                      "    \"event\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"allowMembershipChanges\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    },\n" +
-                                      "    \"pricing\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.PricingQuantizedOutView>>\",\n" +
-                                      "    \"startDate\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"status\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StatusQuantizedOutView>>\",\n" +
-                                      "    \"expirationDate\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.GroupQuantaQuantizedOutView, GroupQuantaQuantizedOutView]]\n" +
-                                      "=== GroupQuantaQuantizedOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"runCount\" : {\n" +
-                                      "      \"comment\" : \"Count of groups.\",\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.user.v2.entity.ExternalUserReadOutView, ExternalUserReadOutView]]\n" +
-                                      "=== ExternalUserReadOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"required\" : [ \"objectType\" ],\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"lastLogin\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"modality\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"graft\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.secret.v2.entity.GraftReadOutView>>\",\n" +
-                                      "    \"created\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"givenName\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"countdown\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.CountdownReadOutView>>\",\n" +
-                                      "    \"active\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    },\n" +
-                                      "    \"handle\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"objectType\" : {\n" +
-                                      "      \"const\" : \"external\"\n" +
-                                      "    },\n" +
-                                      "    \"lastUpdated\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"uploadOrder\" : {\n" +
-                                      "      \"comment\" : \"The order in which the user was added to the group during batch upload, null otherwise\",\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int32\"\n" +
-                                      "    },\n" +
-                                      "    \"familyName\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"email\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"mfaDetail\" : \"<<com.forio.epicenter.skeleton.persistence.source.mysql.definition.secret.v2.entity.MFADetailReadOutView>>\"\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.secret.v2.entity.MFADetailReadOutView, MFADetailReadOutView]]\n" +
-                                      "=== MFADetailReadOutView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"mfaMethodology\" : {\n" +
-                                      "      \"type\" : \"string\",\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"enum\" : [ \"NONE\", \"TOTP\" ]\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.FlightRecorderCreateInView, FlightRecorderCreateInView]]\n" +
-                                      "=== FlightRecorderCreateInView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"nullable\" : true,\n" +
-                                      "  \"x-epicenter-validations\" : [ {\n" +
-                                      "    \"Anointed\" : true\n" +
-                                      "  }, {\n" +
-                                      "    \"AllowedByLicense\" : [ \"NATIVE\" ]\n" +
-                                      "  } ],\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"required\" : [ \"stop\", \"enabled\" ],\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"stop\" : {\n" +
-                                      "      \"x-epicenter-validations\" : [ {\n" +
-                                      "        \"GreaterThan\" : 0\n" +
-                                      "      } ],\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"start\" : {\n" +
-                                      "      \"minimum\" : 0,\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"type\" : \"integer\",\n" +
-                                      "      \"format\" : \"int64\"\n" +
-                                      "    },\n" +
-                                      "    \"enabled\" : {\n" +
-                                      "      \"type\" : \"boolean\"\n" +
-                                      "    }\n" +
-                                      "  }\n" +
-                                      "}\n" +
-                                      "----\n" +
-                                      "\n" +
-                                      "[[com.forio.epicenter.skeleton.persistence.source.mysql.definition.group.v2.entity.StatusCreateInView, StatusCreateInView]]\n" +
-                                      "=== StatusCreateInView\n" +
-                                      "\n" +
-                                      "[source,json,subs=\"attributes,verbatim,quotes,+macros\"]\n" +
-                                      "----\n" +
-                                      "{\n" +
-                                      "  \"type\" : \"object\",\n" +
-                                      "  \"properties\" : {\n" +
-                                      "    \"code\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"x-epicenter-validations\" : [ {\n" +
-                                      "        \"NotBlank\" : true\n" +
-                                      "      }, {\n" +
-                                      "        \"MoreSanitized\" : true\n" +
-                                      "      } ],\n" +
-                                      "      \"type\" : \"string\"\n" +
-                                      "    },\n" +
-                                      "    \"message\" : {\n" +
-                                      "      \"nullable\" : true,\n" +
-                                      "      \"x-epicenter-validations\" : [ {\n" +
-                                      "        \"NotBlank\" : true\n" +
-                                      "      }, {\n" +
-                                      "        \"LessSanitized\" : true\n" +
-                                      "      } ],\n" +
                                       "      \"type\" : \"string\"\n" +
                                       "    }\n" +
                                       "  }\n" +
